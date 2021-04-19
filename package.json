@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/MCB7/it122#readme",
   "dependencies": {
-    "express": "^4.17.1"
-  }
+    "express": "^4.17.1",
+    "node": "^15.14.0"
+  },
+  "type": "module"
 }
