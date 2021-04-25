@@ -24,7 +24,7 @@ const getItem = (color) => {
     });
 }
 
-//console.log(getItem("orange"));
+//http://localhost:3000/details?color=orange
 // RETURNS 
 //{ name: 'jose', age: 60, color: 'orange', shape: 'rectangle' }
 

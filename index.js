@@ -9,8 +9,10 @@ http.createServer((req,res) => {
     let path = url[0].toLowerCase();
     switch(path) {
         case '/':
+            let findAll = data.getAll(query.humans); // get entire array of humans
             res.writeHead(200, {'Content-Type': 'text/plain'});
-            res.end('This is a home page');
+            let Allresults = (findAll) ? JSON.stringify(findAll) : "Not found";
+            res.end("Entire array of humans" + " \n " + Allresults);
             break;
         case '/about':
             res.writeHead(200, {'Content-Type': 'text/plain'});
@@ -20,14 +22,8 @@ http.createServer((req,res) => {
             res.writeHead(404, {'Content-Type': 'text/plain'});
             res.end('Not found');
             break;
-        case '/home':
-            let findAll = data.getAll(query.humans); // get entire array of humans
-            res.writeHead(200, {'Content-Type': 'text/plain'});
-            let Allresults = (findAll) ? JSON.stringify(findAll) : "Not found";
-            res.end("Entire array of humans" + " \n " + Allresults);
-            break;
         case '/details':
-            let findColor = data.getItem('orange'); // returns the object of the corresponding color 
+            let findColor = data.getItem(query.color); // returns the object of the corresponding color 
             res.writeHead(200, {'Content-Type': 'text/plain'});
             let ColorResult = (findColor) ? JSON.stringify(findColor) : "Not found";
             res.end("I've selected the color Orange" + "\n" + ColorResult);
