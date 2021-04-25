@@ -27,7 +27,7 @@ http.createServer((req,res) => {
             res.writeHead(200, {'Content-Type': 'text/plain'});
             let ColorResult = (findColor) ? JSON.stringify(findColor) : "Not found";
             // EXAMPLE http://localhost:3000/details?color=blue
-            res.end("the selected color" + "\n" + ColorResult);
+            res.end("the array object of the corresponding color" + "\n" + ColorResult);
             break;
     }
 }).listen(process.env.PORT || 3000);
