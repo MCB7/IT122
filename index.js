@@ -26,7 +26,8 @@ http.createServer((req,res) => {
             let findColor = data.getItem(query.color); // returns the object of the corresponding color 
             res.writeHead(200, {'Content-Type': 'text/plain'});
             let ColorResult = (findColor) ? JSON.stringify(findColor) : "Not found";
-            res.end("I've selected the color Orange" + "\n" + ColorResult);
+            // EXAMPLE http://localhost:3000/details?color=blue
+            res.end("the selected color" + "\n" + ColorResult);
             break;
     }
 }).listen(process.env.PORT || 3000);
