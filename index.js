@@ -8,7 +8,7 @@ http.createServer((req,res) => {
     let query = parse(url[1]); // convert query string to object
     let path = url[0].toLowerCase();
     switch(path) {
-        case '/':
+        case '/home':
             let findAll = data.getAll(query.humans); // get entire array of humans
             res.writeHead(200, {'Content-Type': 'text/plain'});
             let Allresults = (findAll) ? JSON.stringify(findAll) : "Not found";
