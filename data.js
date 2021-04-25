@@ -18,9 +18,9 @@ const getAll = () => {
 //{ name: 'jose', age: 60, color: 'orange', shape: 'rectangle' },
 //{ name: 'harry', age: 70, color: 'red', shape: 'hexagon' }
 
-const getItem = (color) => {
+const getItem = (name) => {
     return humans.find((humans) => {
-        return humans.color === color;
+        return humans.name === name;
     });
 }
 
