@@ -1,0 +1,17 @@
+  
+<html>
+    <body>
+        <a href="/">Home</a>
+{{#if result}}
+    <h2 class="blue-text">{{name}} Deleted</h2>
+    <li>Name: {{result.name}}</li>
+    <li>Age: {{result.age}}</li>
+    <li>Color: {{result.color}}</li>
+    <li>Shape: {{result.shape}}</li>
+    
+    {{else}}
+        <h2>{{name}} not found</h2>
+    {{/if}}
+
+    </body>
+</html>
