@@ -36,12 +36,10 @@ const getItem = (name) => {
 
 const addItem = (newHuman) => {
     const oldLength = humans.length;
-    // use existing get() method to check if book already in our list
     let found = getItem(newHuman.name);
     if (!found) {
         humans.push(newHuman);
     }
-        // if old & new array lengths differ, item was added
         return {added: oldLength !== humans.length, total: humans.length };
     };
 
@@ -66,12 +64,10 @@ const addItem = (newHuman) => {
 //HOME shows Jose is no longer present in array 
 
 const deleteItem = (name) => {
-    // retain array length for later comparison after array modification
     const oldLength = humans.length;
     humans = humans.filter((human) => {
         return human.name !== name;
     });
-    // if old & new array lengths differ, item was deleted
     return {deleted: oldLength !== humans.length, total: humans.length };
 };
    
