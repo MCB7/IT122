@@ -21,58 +21,14 @@ app.engine('hbs', handlebars({defaultLayout: "main.hbs"}));
 app.set("view engine", "hbs");
 app.use('/api', cors()); // set Access-Control-Allow-Origin header for api route
 
-// app.get('/', (req,res) => {
-//     res.render('home', {humans: data.getAll()});
-// });
-
-
-// app.get('/about', (req,res) => {
-//     res.type('text/plain');
-
-//     res.send('About');
-// });
-
-// app.get('/delete', (req,res) => {
-//     let result = data.deleteItem(req.query.title);
-//     res.render('delete', {
-//         title: req.query.title, 
-//         result: result
-//     }
-//     );
-// });
-
-// app.get('/add', (req,res)=>{
-//     let result = req.query
-//     data.addItem(result)
-//     res.render('details', {
-//         title: req.query.title, 
-//         result: result
-//     });
-// });
-
-// app.get('/detail', (req,res) => {
-//     let result = data.getItem(req.query.title);
-//     res.render("details", {
-//         title: req.query.title, 
-//         result
-//         }
-//     );
-// });
-
-// app.post('/detail', (req,res) => {
-//    let found = data.getItem(req.body.name);
-//     res.render("details", {
-//         name: req.body.name, 
-//         result: found, 
-//         humans: data.getAll()});
-// });
 
 app.get('/', (req,res) => {
     Human.find({}).lean()
         .then((humans) => {
-            res.render('home', { humans });
-        })
-        .catch(err => next(err));
+           //res.render('home', { humans });
+           res.render('home', {humans: JSON.stringify(humans)});
+        });
+        //.catch(err => next(err));
 });
 
 app.get('/about', (req,res) => {

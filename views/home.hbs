@@ -7,3 +7,22 @@
 {{#each humans}}
     <li><a href="/detail?title={{name}}">{{name}}</a></li>
 {{/each}}
+
+<div id="root"></div>
+<script type="text/babel">
+
+    const humans = {{{humans}}}
+
+    const Humans = (props) => {
+        const ListPeople = props.names.map((person) => 
+        <li key={person._id}>
+            <a href={"/detail?title="+person.name}>{person.name}</a>
+        </li>);
+        return <ul>{ListPeople}</ul>
+    }
+    ReactDOM.render(
+        <div><Humans names={humans} /></div>,
+        document.getElementById('root')
+    );
+
+</script>
