@@ -2,27 +2,70 @@
 <h2>Home</h2>
 
 </form>
-<hr>
+{{!-- <hr>
 <h3>Humans</h3>
 {{#each humans}}
     <li><a href="/detail?title={{name}}">{{name}}</a></li>
-{{/each}}
+{{/each}} --}}
 
 <div id="root"></div>
 <script type="text/babel">
 
     const humans = {{{humans}}}
 
+
     const Humans = (props) => {
-        const ListPeople = props.names.map((person) => 
-        <li key={person._id}>
-            <a href={"/detail?title="+person.name}>{person.name}</a>
+        const listHumans = props.data.map((person) =>
+        <li key={person._id} id={person._id} onClick={props.clickHandler}>
+            {person.name}
         </li>);
-        return <ul>{ListPeople}</ul>
+        return <ul>{listHumans}</ul>
     }
-    ReactDOM.render(
-        <div><Humans names={humans} /></div>,
-        document.getElementById('root')
-    );
+      
+
+    const HumanDetail = (props) => {
+        return <div>
+        <hr />
+            <h3>Human Details</h3>
+            {props.person.name && <ul>
+                <li>name: {props.person.name}</li>
+                <li>age: {props.person.age}</li>
+                <li>color: {props.person.color}</li>
+                <li>shape: {props.person.shape}</li>
+            </ul>
+            }
+        </div>
+    }
+
+
+
+class HumanApp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            people: {{{humans}}},
+            currentPerson: {}
+        };
+        this.selectHuman = this.selectHuman.bind(this);
+    }
+
+    selectHuman = (event) => {
+        //window.location.href = "/detail?title=" + event.target.innerText;
+        console.log(event.target.innerText)
+        const found = this.state.people.find((person) => {
+            return person.name === event.target.innerText;
+        });
+        this.setState({currentPerson: found})
+    }
+   
+    render() {
+     return (
+     <div><h2>Human List</h2>
+          <Humans data={humans} clickHandler={this.selectHuman} />
+          <HumanDetail person={this.state.currentPerson} />
+     </div> );
+    }
+}
+ ReactDOM.render( <HumanApp />,  document.getElementById('root') );
 
 </script>
